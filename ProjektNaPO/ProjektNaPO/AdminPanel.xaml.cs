@@ -31,28 +31,16 @@ namespace ProjektNaPO
 
         //importing database
         List<Product> products = Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\list.dat");
+
         public AdminPanel()
         {
             InitializeComponent();
-            var movies = this.movies;
-            var games = this.games;
-            var books = this.books;
-            var albums = this.albums;
-            var products = this.products;
 
-            //adding values to categorized lists
-            foreach (var product in products)
-            {
-                if (product.Prod==Product.KindOf.Movie) movies.Add(product);
-                if (product.Prod == Product.KindOf.Game) games.Add(product);
-                if (product.Prod == Product.KindOf.Book) books.Add(product);
-                if (product.Prod == Product.KindOf.Album) albums.Add(product);
-            }
+            var products = this.products;
 
             listOfContent.ItemsSource = products;
             comboxCategory.ItemsSource = Enum.GetValues(typeof(Product.KindOf));
             comboxMainCat.ItemsSource = Enum.GetValues(typeof(Product.KindOf));
-
         }
 
         private void buttonDeleteObject_Click(object sender, RoutedEventArgs e)
@@ -77,11 +65,19 @@ namespace ProjektNaPO
                     MessageBox.Show("Something went wrong. Check input boxes." + Environment.NewLine + Environment.NewLine + exception.Message, "Ooops...");
                 }
             }
-
         }
 
         private void buttonSaveAll_Click(object sender, RoutedEventArgs e)
         {
+            //adding values to categorized lists
+            foreach (var product in products)
+            {
+                if (product.Prod == Product.KindOf.Movie) movies.Add(product);
+                if (product.Prod == Product.KindOf.Game) games.Add(product);
+                if (product.Prod == Product.KindOf.Book) books.Add(product);
+                if (product.Prod == Product.KindOf.Album) albums.Add(product);
+            }
+
             //serializing categorized lists
             Serialization.Serialize(movies, Directory.GetCurrentDirectory() + @"\DB\Categories\movies.dat");
             Serialization.Serialize(games, Directory.GetCurrentDirectory() + @"\DB\Categories\games.dat");

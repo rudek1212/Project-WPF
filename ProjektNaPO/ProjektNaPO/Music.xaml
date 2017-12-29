@@ -8,9 +8,12 @@
         Title="Music" Height="300" Width="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="240"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <ListView Margin="10 10 10 10" Name="AlbumsView"></ListView>
+        <ListView Margin="10 10 10 10" Name="CartTest" Grid.Row="1"></ListView>
+        <Button Name="AddToCart" Grid.Row="2" Content="Add to cart" Margin="5 5 5 5" Click="AddToCart_Click"></Button>
     </Grid>
 </Window>

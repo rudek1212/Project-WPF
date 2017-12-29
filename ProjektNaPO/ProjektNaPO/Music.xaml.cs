@@ -20,11 +20,21 @@ namespace ProjektNaPO
     /// </summary>
     public partial class Music : Window
     {
+        List<Product> albums = Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\Categories\albums.dat");
+        List<Product> cart = Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\cart.dat");
         public Music()
         {
             InitializeComponent();
-            List<Product> albums = Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\Categories\albums.dat");
             AlbumsView.ItemsSource = albums;
+            CartTest.ItemsSource = cart;
+        }
+
+        private void AddToCart_Click(object sender, RoutedEventArgs e)
+        {
+            var index = AlbumsView.Items.IndexOf(AlbumsView.SelectedItem);
+            cart.Add(albums.ElementAt(index));
+            AlbumsView.Items.Refresh();
+            CartTest.Items.Refresh();
         }
     }
 }
