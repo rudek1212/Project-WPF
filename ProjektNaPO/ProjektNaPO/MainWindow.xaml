@@ -1,0 +1,42 @@
+﻿<Window x:Class="ProjektNaPO.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjektNaPO"
+        mc:Ignorable="d"
+        Title="Multimedia Shop" Height="300" Width="450">
+    <Border Padding="10">
+        <StackPanel>
+            <TextBlock Text="SHOP" FontWeight="Bold" Margin="10 10 10 10">
+
+            </TextBlock>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Margin="10 0 10 0" Grid.Column="0" Name="buttonMusic" Content="Music" Click="buttonMusic_Click"></Button>
+                <Button Margin="10 0 10 0" Grid.Column="1" Name="buttonFilm" Content="Film" Click="buttonFilm_Click"></Button>
+            </Grid>
+            <TextBlock></TextBlock>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Margin="10 0 10 0" Grid.Column="0" Name="buttonGames" Content="Games" Click="buttonGames_Click"></Button>
+                <Button Margin="10 0 10 0" Grid.Column="1" Name="buttonBooks" Content="Books" Click="buttonBooks_Click"></Button>
+            </Grid>
+            <Grid Height="140">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="71*"/>
+                    <ColumnDefinition Width="140*"/>
+                </Grid.ColumnDefinitions>
+                <Button Margin="100,10,100,0" Name="buttonBasket" Content="Basket" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="buttonBasket_Click"></Button>
+                <Button Margin="10,0,10,10" Name="buttonAdmin" Content ="Admin Panel" VerticalAlignment="Bottom" Click="buttonAdmin_Click" Grid.ColumnSpan="2"></Button>
+            </Grid>
+
+        </StackPanel>
+    </Border>
+</Window>

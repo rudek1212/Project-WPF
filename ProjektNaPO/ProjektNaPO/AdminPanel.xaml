@@ -1,0 +1,36 @@
+﻿<Window x:Class="ProjektNaPO.AdminPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjektNaPO"
+        mc:Ignorable="d"
+        Title="AdminPanel" Height="500" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox Margin="10 10 10 10" Name="listOfContent" Grid.ColumnSpan="5"/>
+        <Button Name="buttonDeleteObject" Grid.ColumnSpan="2" Content="Delete" Grid.Row="1" Margin="5 0 5 0" Click="buttonDeleteObject_Click"/>
+        <Button Name="buttonAddObject" Grid.ColumnSpan="2" Content="Add" Grid.Row="1" Grid.Column="2" Margin="5 0 5 0"/>
+        <Label Content="Name" Grid.Row="2"></Label>
+        <Label Content="Amount" Grid.Row="3"></Label>
+        <Label Content="Price" Grid.Row="4"></Label>
+        <Label Content="Category" Grid.Row="5"></Label>
+        <TextBox Name="boxName" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="5 5 5 5"/>
+        <TextBox Name="boxAmount" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="5 5 5 5"/>
+        <TextBox Name="boxPrice" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Margin="5 5 5 5"/>
+        <ComboBox Name="boxCategory" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Margin="5 5 5 5"/>
+    </Grid>
+</Window>
