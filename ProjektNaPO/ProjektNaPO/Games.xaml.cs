@@ -23,7 +23,6 @@ namespace ProjektNaPO
         public Games()
         {
             InitializeComponent();
-            InitializeComponent();
             List<Product> games = Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\Categories\games.dat");
             GamesView.ItemsSource = games;
         }

@@ -23,7 +23,6 @@ namespace ProjektNaPO
         public Music()
         {
             InitializeComponent();
-            InitializeComponent();
             List<Product> albums = Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\Categories\albums.dat");
             AlbumsView.ItemsSource = albums;
         }

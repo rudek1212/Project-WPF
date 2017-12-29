@@ -23,6 +23,7 @@ namespace ProjektNaPO
     /// </summary>
     public partial class AdminPanel : Window
     {
+        //creating categorized lists
         List<Product> movies = new List<Product>();
         List<Product> games = new List<Product>();
         List<Product> books = new List<Product>();
@@ -39,8 +40,7 @@ namespace ProjektNaPO
             var albums = this.albums;
             var products = this.products;
 
-
-            //creating new categorized lists
+            //adding values to categorized lists
             foreach (var product in products)
             {
                 if (product.Prod==Product.KindOf.Movie) movies.Add(product);
@@ -48,20 +48,50 @@ namespace ProjektNaPO
                 if (product.Prod == Product.KindOf.Book) books.Add(product);
                 if (product.Prod == Product.KindOf.Album) albums.Add(product);
             }
-            //serializing categorized lists
-            Serialization.Serialize(movies, Directory.GetCurrentDirectory() + @"\DB\Categories\movies.dat");
-            Serialization.Serialize(games, Directory.GetCurrentDirectory() + @"\DB\Categories\games.dat");
-            Serialization.Serialize(books, Directory.GetCurrentDirectory() + @"\DB\Categories\books.dat");
-            Serialization.Serialize(albums, Directory.GetCurrentDirectory() + @"\DB\Categories\albums.dat");
+
             listOfContent.ItemsSource = products;
-            boxCategory.ItemsSource = Enum.GetValues(typeof(Product.KindOf));
+            comboxCategory.ItemsSource = Enum.GetValues(typeof(Product.KindOf));
+            comboxMainCat.ItemsSource = Enum.GetValues(typeof(Product.KindOf));
+
         }
 
         private void buttonDeleteObject_Click(object sender, RoutedEventArgs e)
         {
             var index = listOfContent.Items.IndexOf(listOfContent.SelectedItem);
             products.RemoveAt(index);
-            listOfContent.UpdateLayout();
+            listOfContent.Items.Refresh();
+        }
+
+        private void buttonAddObject_Click(object sender, RoutedEventArgs e)
+        {
+            if (boxName.Text == "" || boxPrice.Text == "" || boxAmount.Text == "" || comboxCategory.SelectedItem == null) MessageBox.Show("Add all values");
+            else
+            {
+                try
+                {
+                    products.Add(new Product(boxName.Text, Convert.ToInt32(boxAmount.Text), Convert.ToDouble(boxPrice.Text), (Product.KindOf)comboxCategory.SelectedItem));
+                    listOfContent.Items.Refresh();
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show("Something went wrong. Check input boxes." + Environment.NewLine + Environment.NewLine + exception.Message, "Ooops...");
+                }
+            }
+
+        }
+
+        private void buttonSaveAll_Click(object sender, RoutedEventArgs e)
+        {
+            //serializing categorized lists
+            Serialization.Serialize(movies, Directory.GetCurrentDirectory() + @"\DB\Categories\movies.dat");
+            Serialization.Serialize(games, Directory.GetCurrentDirectory() + @"\DB\Categories\games.dat");
+            Serialization.Serialize(books, Directory.GetCurrentDirectory() + @"\DB\Categories\books.dat");
+            Serialization.Serialize(albums, Directory.GetCurrentDirectory() + @"\DB\Categories\albums.dat");
+
+            //serializing main DB
+            Serialization.Serialize(products, Directory.GetCurrentDirectory() + @"\DB\list.dat");
+
+            MessageBox.Show("Done");
         }
     }
 }

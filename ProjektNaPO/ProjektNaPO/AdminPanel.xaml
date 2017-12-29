@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektNaPO"
         mc:Ignorable="d"
-        Title="AdminPanel" Height="500" Width="300">
+        Title="AdminPanel" Height="530" Width="300">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="300"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -16,21 +17,32 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Margin="10 10 10 10" Name="listOfContent" Grid.ColumnSpan="5"/>
-        <Button Name="buttonDeleteObject" Grid.ColumnSpan="2" Content="Delete" Grid.Row="1" Margin="5 0 5 0" Click="buttonDeleteObject_Click"/>
-        <Button Name="buttonAddObject" Grid.ColumnSpan="2" Content="Add" Grid.Row="1" Grid.Column="2" Margin="5 0 5 0"/>
-        <Label Content="Name" Grid.Row="2"></Label>
-        <Label Content="Amount" Grid.Row="3"></Label>
-        <Label Content="Price" Grid.Row="4"></Label>
-        <Label Content="Category" Grid.Row="5"></Label>
-        <TextBox Name="boxName" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="5 5 5 5"/>
-        <TextBox Name="boxAmount" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="5 5 5 5"/>
-        <TextBox Name="boxPrice" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Margin="5 5 5 5"/>
-        <ComboBox Name="boxCategory" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Margin="5 5 5 5"/>
+        <ListBox Margin="10 10 10 10" Name="listOfContent" Grid.ColumnSpan="12" Grid.Row="1"/>
+        <Button Name="buttonDeleteObject" Grid.ColumnSpan="4" Content="Delete" Grid.Row="2" Margin="5 0 5 0" Click="buttonDeleteObject_Click"/>
+        <Button Name="buttonAddObject" Grid.ColumnSpan="4" Content="Add" Grid.Row="2" Grid.Column="4" Margin="5 0 5 0" Click="buttonAddObject_Click"/>
+        <Button Name="buttonSaveAll" Grid.ColumnSpan="4" Content="Save" Grid.Row="2" Grid.Column="8" Margin="5 0 5 0" Click="buttonSaveAll_Click"/>
+        <Label Content="Name" VerticalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="3"></Label>
+        <Label Content="Amount" VerticalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="3"></Label>
+        <Label Content="Price" VerticalAlignment="Center" Grid.Row="5" Grid.ColumnSpan="3"></Label>
+        <Label Content="Category" VerticalAlignment="Center" Grid.Row="6" Grid.ColumnSpan="3"></Label>
+        <Label Content="Categories" VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0"></Label>
+        <TextBox Name="boxName" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="10" Margin="5 5 5 5"/>
+        <TextBox Name="boxAmount" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="10" Margin="5 5 5 5"/>
+        <TextBox Name="boxPrice" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="10" Margin="5 5 5 5"/>
+        <ComboBox Name="comboxCategory" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="10" Margin="5 5 5 5"/>
+        <ComboBox Name="comboxMainCat" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="6" Margin="5 5 5 5 "></ComboBox>
     </Grid>
 </Window>

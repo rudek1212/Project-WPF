@@ -8,7 +8,7 @@
         Title="Multimedia Shop" Height="300" Width="450">
     <Border Padding="10">
         <StackPanel>
-            <TextBlock Text="SHOP" FontWeight="Bold" Margin="10 10 10 10">
+            <TextBlock Text="SHOP" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Margin="10 10 10 10">
 
             </TextBlock>
             <Grid>
