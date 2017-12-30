@@ -1,31 +1,97 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ProjektNaPO
 {
     /// <summary>
-    /// Interaction logic for Cart.xaml
+    ///     Interaction logic for Cart.xaml
     /// </summary>
-    public partial class Cart : Window
+    public partial class Cart
     {
+        private readonly List<Product> _albums =
+            Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\Categories\albums.dat");
+
+        private readonly List<Product> _books =
+            Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\Categories\books.dat");
+
+        private readonly List<Product> _cart =
+            Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+
+        private readonly List<Product> _games =
+            Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\Categories\games.dat");
+
+        private readonly List<Product> _movies =
+            Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\Categories\movies.dat");
+
         public Cart()
         {
             InitializeComponent();
+            boxCart.ItemsSource = _cart;
         }
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
             new MainWindow().Show();
+        }
+
+        private void removeFromCart_Click(object sender, RoutedEventArgs e)
+        {
+            var index = boxCart.Items.IndexOf(boxCart.SelectedItem);
+            try
+            {
+                if (_cart.ElementAt(index).Prod == Product.KindOf.Game)
+                {
+                    _games.Add(_cart.ElementAt(index));
+                    _cart.RemoveAt(index);
+                    boxCart.Items.Refresh();
+                    Serialization.Serialize(_games, Directory.GetCurrentDirectory() + @"\DB\Categories\games.dat");
+                    Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+                }
+                else if (_cart.ElementAt(index).Prod == Product.KindOf.Album)
+                {
+                    _albums.Add(_cart.ElementAt(index));
+                    _cart.RemoveAt(index);
+                    boxCart.Items.Refresh();
+                    Serialization.Serialize(_albums, Directory.GetCurrentDirectory() + @"\DB\Categories\albums.dat");
+                    Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+                }
+                else if (_cart.ElementAt(index).Prod == Product.KindOf.Book)
+                {
+                    _books.Add(_cart.ElementAt(index));
+                    _cart.RemoveAt(index);
+                    boxCart.Items.Refresh();
+                    Serialization.Serialize(_books, Directory.GetCurrentDirectory() + @"\DB\Categories\books.dat");
+                    Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+                }
+                else if (_cart.ElementAt(index).Prod == Product.KindOf.Movie)
+                {
+                    _movies.Add(_cart.ElementAt(index));
+                    _cart.RemoveAt(index);
+                    boxCart.Items.Refresh();
+                    Serialization.Serialize(_movies, Directory.GetCurrentDirectory() + @"\DB\Categories\movies.dat");
+                    Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+                }
+                try
+                {
+                    boxCart.SelectedItem = boxCart.Items.IndexOf(0);
+                }
+                catch (Exception)
+                {
+                    //do nothing
+                }
+            }
+            catch (Exception)
+            {
+                //do nothing
+            }
+        }
+
+        private void print_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

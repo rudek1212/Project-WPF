@@ -18,7 +18,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ListView Margin="10 0 10 0" Name="GamesViev" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <ListView Margin="10 0 10 0" Name="GamesView" Grid.Row="1" Grid.ColumnSpan="2"/>
         <ListView Margin="10 0 10 0" Name="CartView" Grid.Row="3" Grid.ColumnSpan="2"/>
         <Button Name="AddToCart" Grid.Row="4" Content="Add to cart" Margin="5 5 5 5" Click="AddToCart_Click"/>
         <Button Name="ReomoveFromCart" Grid.Row="4" Content="Remove from cart" Margin="5 5 5 5" Grid.Column="1" Click="ReomoveFromCart_Click"/>

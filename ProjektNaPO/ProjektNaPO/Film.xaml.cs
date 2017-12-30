@@ -28,25 +28,39 @@ namespace ProjektNaPO
         {
             var index = MoviesView.Items.IndexOf(MoviesView.SelectedItem);
 
-            _cart.Add(_movies.ElementAt(index));
-            _movies.RemoveAt(index);
-            MoviesView.Items.Refresh();
-            CartView.Items.Refresh();
-            Serialization.Serialize(_movies, Directory.GetCurrentDirectory() + @"\DB\Categories\movies.dat");
-            Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+            try
+            {
+                _cart.Add(_movies.ElementAt(index));
+                _movies.RemoveAt(index);
+                MoviesView.Items.Refresh();
+                CartView.Items.Refresh();
+                Serialization.Serialize(_movies, Directory.GetCurrentDirectory() + @"\DB\Categories\movies.dat");
+                Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Select an item to add!");
+            }
         }
 
         private void ReomoveFromCart_Click(object sender, RoutedEventArgs e)
         {
             var index = CartView.Items.IndexOf(CartView.SelectedItem);
-            if (_cart.ElementAt(index).Prod == Product.KindOf.Movie)
+            try
             {
-                _movies.Add(_cart.ElementAt(index));
-                _cart.RemoveAt(index);
-                MoviesView.Items.Refresh();
-                CartView.Items.Refresh();
-                Serialization.Serialize(_movies, Directory.GetCurrentDirectory() + @"\DB\Categories\movies.dat");
-                Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+                if (_cart.ElementAt(index).Prod == Product.KindOf.Movie)
+                {
+                    _movies.Add(_cart.ElementAt(index));
+                    _cart.RemoveAt(index);
+                    MoviesView.Items.Refresh();
+                    CartView.Items.Refresh();
+                    Serialization.Serialize(_movies, Directory.GetCurrentDirectory() + @"\DB\Categories\movies.dat");
+                    Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+                }
+            }
+            catch (System.Exception)
+            {
+                //do nothing
             }
         }
 

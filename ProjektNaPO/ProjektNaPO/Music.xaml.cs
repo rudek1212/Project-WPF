@@ -28,25 +28,39 @@ namespace ProjektNaPO
         {
             var index = AlbumsView.Items.IndexOf(AlbumsView.SelectedItem);
 
-            _cart.Add(_albums.ElementAt(index));
-            _albums.RemoveAt(index);
-            AlbumsView.Items.Refresh();
-            CartView.Items.Refresh();
-            Serialization.Serialize(_albums, Directory.GetCurrentDirectory() + @"\DB\Categories\albums.dat");
-            Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+            try
+            {
+                _cart.Add(_albums.ElementAt(index));
+                _albums.RemoveAt(index);
+                AlbumsView.Items.Refresh();
+                CartView.Items.Refresh();
+                Serialization.Serialize(_albums, Directory.GetCurrentDirectory() + @"\DB\Categories\albums.dat");
+                Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Select an item to add!");
+            }
         }
 
         private void ReomoveFromCart_Click(object sender, RoutedEventArgs e)
         {
             var index = CartView.Items.IndexOf(CartView.SelectedItem);
-            if (_cart.ElementAt(index).Prod == Product.KindOf.Album)
+            try
             {
-                _albums.Add(_cart.ElementAt(index));
-                _cart.RemoveAt(index);
-                AlbumsView.Items.Refresh();
-                CartView.Items.Refresh();
-                Serialization.Serialize(_albums, Directory.GetCurrentDirectory() + @"\DB\Categories\albums.dat");
-                Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+                if (_cart.ElementAt(index).Prod == Product.KindOf.Album)
+                {
+                    _albums.Add(_cart.ElementAt(index));
+                    _cart.RemoveAt(index);
+                    AlbumsView.Items.Refresh();
+                    CartView.Items.Refresh();
+                    Serialization.Serialize(_albums, Directory.GetCurrentDirectory() + @"\DB\Categories\albums.dat");
+                    Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+                }
+            }
+            catch (System.Exception)
+            {
+                //do nothing
             }
         }
 

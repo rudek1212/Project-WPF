@@ -28,7 +28,7 @@ namespace ProjektNaPO
 
         public override string ToString()
         {
-            return Name + " - Amount: " + Amount + " - Price: " + Price;
+            return Name + " - Amount: " + Amount + " - Price: " + Price + " - Type: " + Prod;
         }
     }
 }

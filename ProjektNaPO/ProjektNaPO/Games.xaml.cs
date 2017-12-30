@@ -20,33 +20,47 @@ namespace ProjektNaPO
         public Games()
         {
             InitializeComponent();
-            CartView.ItemsSource = _games;
+            GamesView.ItemsSource = _games;
             CartView.ItemsSource = _cart;
         }
 
         private void AddToCart_Click(object sender, RoutedEventArgs e)
         {
-            var index = CartView.Items.IndexOf(CartView.SelectedItem);
+            var index = GamesView.Items.IndexOf(GamesView.SelectedItem);
 
-            _cart.Add(_games.ElementAt(index));
-            _games.RemoveAt(index);
-            CartView.Items.Refresh();
-            CartView.Items.Refresh();
-            Serialization.Serialize(_games, Directory.GetCurrentDirectory() + @"\DB\Categories\games.dat");
-            Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+            try
+            {
+                _cart.Add(_games.ElementAt(index));
+                _games.RemoveAt(index);
+                CartView.Items.Refresh();
+                GamesView.Items.Refresh();
+                Serialization.Serialize(_games, Directory.GetCurrentDirectory() + @"\DB\Categories\games.dat");
+                Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Select an item to add!");
+            }
         }
 
         private void ReomoveFromCart_Click(object sender, RoutedEventArgs e)
         {
             var index = CartView.Items.IndexOf(CartView.SelectedItem);
-            if (_cart.ElementAt(index).Prod == Product.KindOf.Game)
+            try
             {
-                _games.Add(_cart.ElementAt(index));
-                _cart.RemoveAt(index);
-                CartView.Items.Refresh();
-                CartView.Items.Refresh();
-                Serialization.Serialize(_games, Directory.GetCurrentDirectory() + @"\DB\Categories\games.dat");
-                Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+                if (_cart.ElementAt(index).Prod == Product.KindOf.Game)
+                {
+                    _games.Add(_cart.ElementAt(index));
+                    _cart.RemoveAt(index);
+                    CartView.Items.Refresh();
+                    CartView.Items.Refresh();
+                    Serialization.Serialize(_games, Directory.GetCurrentDirectory() + @"\DB\Categories\games.dat");
+                    Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+                }
+            }
+            catch (System.Exception)
+            {
+                //do nothing
             }
         }
 

@@ -30,6 +30,7 @@ namespace ProjektNaPO
             listOfContent.ItemsSource = products;
             comboxCategory.ItemsSource = Enum.GetValues(typeof(Product.KindOf));
             comboxMainCat.ItemsSource = Enum.GetValues(typeof(Product.KindOf));
+            File.Delete(Directory.GetCurrentDirectory() + @"\DB\cart.dat");
         }
 
         private void buttonDeleteObject_Click(object sender, RoutedEventArgs e)
