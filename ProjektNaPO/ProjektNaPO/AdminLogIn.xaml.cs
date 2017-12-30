@@ -1,26 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ProjektNaPO
 {
     /// <summary>
-    /// Interaction logic for AdminLogIn.xaml
+    ///     Interaction logic for AdminLogIn.xaml
     /// </summary>
-    public partial class AdminLogIn : Window
+    public partial class AdminLogIn
     {
-        private string login = "a";
-        private string password = "a";
+        private readonly string login = "a";
+        private readonly string password = "a";
+
         public AdminLogIn()
         {
             InitializeComponent();
@@ -32,7 +23,7 @@ namespace ProjektNaPO
             if (LoginBox.Text == login && PasswordBox.Password == password)
             {
                 MessageBox.Show("OK");
-                AdminPanel panel = new AdminPanel();
+                var panel = new AdminPanel();
                 panel.Show();
                 Hide();
             }
@@ -49,6 +40,11 @@ namespace ProjektNaPO
         {
             if (e.Key == Key.Return)
                 IsLoginOk(sender, e);
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            new MainWindow().Show();
         }
     }
 }

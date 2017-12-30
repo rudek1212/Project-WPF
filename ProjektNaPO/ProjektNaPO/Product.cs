@@ -1,20 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjektNaPO
 {
     [Serializable]
     public class Product
     {
-        public string Name;
-        public int Amount;
-        public double Price;
-        public KindOf Prod;
-
-
         public enum KindOf
         {
             Book,
@@ -22,6 +12,11 @@ namespace ProjektNaPO
             Album,
             Game
         }
+
+        public int Amount;
+        public string Name;
+        public double Price;
+        public KindOf Prod;
 
         public Product(string name, int amount, double price, KindOf prod)
         {
@@ -33,7 +28,7 @@ namespace ProjektNaPO
 
         public override string ToString()
         {
-            return (Name + " - Amount: " + Amount + " - Price: " + Price);
+            return Name + " - Amount: " + Amount + " - Price: " + Price;
         }
     }
 }

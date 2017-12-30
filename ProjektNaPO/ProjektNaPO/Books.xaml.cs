@@ -1,59 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ProjektNaPO
 {
     /// <summary>
-    /// Interaction logic for Books.xaml
+    ///     Interaction logic for Books.xaml
     /// </summary>
-    public partial class Books : Window
+    public partial class Books
     {
-        List<Product> books = Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\Categories\books.dat");
-        List<Product> cart = Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+        private readonly List<Product> _books =
+            Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\Categories\books.dat");
+
+        private readonly List<Product> _cart =
+            Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+
         public Books()
         {
             InitializeComponent();
-            BooksView.ItemsSource = books;
-            CartView.ItemsSource = cart;
+            BooksView.ItemsSource = _books;
+            CartView.ItemsSource = _cart;
         }
 
         private void AddToCart_Click(object sender, RoutedEventArgs e)
         {
             var index = BooksView.Items.IndexOf(BooksView.SelectedItem);
 
-            cart.Add(books.ElementAt(index));
-            books.RemoveAt(index);
+            _cart.Add(_books.ElementAt(index));
+            _books.RemoveAt(index);
             BooksView.Items.Refresh();
             CartView.Items.Refresh();
-            Serialization.Serialize(books, Directory.GetCurrentDirectory() + @"\DB\Categories\books.dat");
-            Serialization.Serialize(cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+            Serialization.Serialize(_books, Directory.GetCurrentDirectory() + @"\DB\Categories\books.dat");
+            Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
         }
 
         private void ReomoveFromCart_Click(object sender, RoutedEventArgs e)
         {
             var index = CartView.Items.IndexOf(CartView.SelectedItem);
-            if (cart.ElementAt(index).Prod == Product.KindOf.Book)
+            if (_cart.ElementAt(index).Prod == Product.KindOf.Book)
             {
-                books.Add(cart.ElementAt(index));
-                cart.RemoveAt(index);
+                _books.Add(_cart.ElementAt(index));
+                _cart.RemoveAt(index);
                 BooksView.Items.Refresh();
                 CartView.Items.Refresh();
-                Serialization.Serialize(books, Directory.GetCurrentDirectory() + @"\DB\Categories\books.dat");
-                Serialization.Serialize(cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+                Serialization.Serialize(_books, Directory.GetCurrentDirectory() + @"\DB\Categories\books.dat");
+                Serialization.Serialize(_cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
             }
+        }
 
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            new MainWindow().Show();
         }
     }
 }

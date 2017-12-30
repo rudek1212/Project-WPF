@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektNaPO"
         mc:Ignorable="d"
-        Title="AdminLogIn" Height="150" Width="350">
+        Title="AdminLogIn" Height="150" Width="350" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

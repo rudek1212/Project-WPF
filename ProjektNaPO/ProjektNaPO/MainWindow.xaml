@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektNaPO"
         mc:Ignorable="d"
-        Title="Multimedia Shop" Height="300" Width="450">
+        Title="Multimedia Shop" Height="300" Width="450" Closing="Window_Closing">
     <Border Padding="10">
         <StackPanel>
             <TextBlock Text="SHOP" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Margin="10 10 10 10">
