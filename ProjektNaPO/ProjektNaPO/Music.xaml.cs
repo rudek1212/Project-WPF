@@ -26,15 +26,34 @@ namespace ProjektNaPO
         {
             InitializeComponent();
             AlbumsView.ItemsSource = albums;
-            CartTest.ItemsSource = cart;
+            CartView.ItemsSource = cart;
         }
 
         private void AddToCart_Click(object sender, RoutedEventArgs e)
         {
             var index = AlbumsView.Items.IndexOf(AlbumsView.SelectedItem);
+
             cart.Add(albums.ElementAt(index));
+            albums.RemoveAt(index);
             AlbumsView.Items.Refresh();
-            CartTest.Items.Refresh();
+            CartView.Items.Refresh();
+            Serialization.Serialize(albums, Directory.GetCurrentDirectory() + @"\DB\Categories\albums.dat");
+            Serialization.Serialize(cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+        }
+
+        private void ReomoveFromCart_Click(object sender, RoutedEventArgs e)
+        {
+            var index = CartView.Items.IndexOf(CartView.SelectedItem);
+            if (cart.ElementAt(index).Prod == Product.KindOf.Album)
+            {
+                albums.Add(cart.ElementAt(index));
+                cart.RemoveAt(index);
+                AlbumsView.Items.Refresh();
+                CartView.Items.Refresh();
+                Serialization.Serialize(albums, Directory.GetCurrentDirectory() + @"\DB\Categories\albums.dat");
+                Serialization.Serialize(cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+            }
+
         }
     }
 }

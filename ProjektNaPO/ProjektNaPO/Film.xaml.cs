@@ -20,11 +20,40 @@ namespace ProjektNaPO
     /// </summary>
     public partial class Film : Window
     {
+        List<Product> movies = Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\Categories\movies.dat");
+        List<Product> cart = Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\cart.dat");
         public Film()
         {
             InitializeComponent();
-            List<Product> movies = Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\Categories\movies.dat");
             MoviesView.ItemsSource = movies;
+            CartView.ItemsSource = cart;
+        }
+
+        private void AddToCart_Click(object sender, RoutedEventArgs e)
+        {
+            var index = MoviesView.Items.IndexOf(MoviesView.SelectedItem);
+
+            cart.Add(movies.ElementAt(index));
+            movies.RemoveAt(index);
+            MoviesView.Items.Refresh();
+            CartView.Items.Refresh();
+            Serialization.Serialize(movies, Directory.GetCurrentDirectory() + @"\DB\Categories\movies.dat");
+            Serialization.Serialize(cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+        }
+
+        private void ReomoveFromCart_Click(object sender, RoutedEventArgs e)
+        {
+            var index = CartView.Items.IndexOf(CartView.SelectedItem);
+            if (cart.ElementAt(index).Prod == Product.KindOf.Movie)
+            {
+                movies.Add(cart.ElementAt(index));
+                cart.RemoveAt(index);
+                MoviesView.Items.Refresh();
+                CartView.Items.Refresh();
+                Serialization.Serialize(movies, Directory.GetCurrentDirectory() + @"\DB\Categories\movies.dat");
+                Serialization.Serialize(cart, Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+            }
+
         }
     }
 }

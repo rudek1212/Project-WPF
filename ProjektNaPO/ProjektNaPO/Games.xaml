@@ -8,9 +8,21 @@
         Title="Games" Height="300" Width="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="240"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <ListView Margin="10 10 10 10" Name="GamesView"></ListView>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ListView Margin="10 0 10 0" Name="GamesViev" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <ListView Margin="10 0 10 0" Name="CartView" Grid.Row="3" Grid.ColumnSpan="2"/>
+        <Button Name="AddToCart" Grid.Row="4" Content="Add to cart" Margin="5 5 5 5" Click="AddToCart_Click"/>
+        <Button Name="ReomoveFromCart" Grid.Row="4" Content="Remove from cart" Margin="5 5 5 5" Grid.Column="1" Click="ReomoveFromCart_Click"/>
+        <Label Content="Games:" FontSize="9" Grid.Row="0"></Label>
+        <Label Content="Cart:" FontSize="9" Grid.Row="2"></Label>
     </Grid>
 </Window>
