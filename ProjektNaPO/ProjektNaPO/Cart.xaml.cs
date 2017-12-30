@@ -27,6 +27,9 @@ namespace ProjektNaPO
         private readonly List<Product> _movies =
             Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\Categories\movies.dat");
 
+        private readonly List<Product> _products =
+            Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\list.dat");
+
         public Cart()
         {
             InitializeComponent();
@@ -92,6 +95,24 @@ namespace ProjektNaPO
 
         private void print_Click(object sender, RoutedEventArgs e)
         {
+            List<string> CartList = new List<string>();
+            foreach (var product in _cart)
+                CartList.Add(product.ToString());
+            File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\CartList.txt", CartList);
+            foreach (var product in _cart)
+            {
+                foreach (var element in _products)
+                {
+                    if (product.Equals(element))
+                    {
+                        _products.Remove(element);
+                        _cart.Remove(product);
+                    }
+
+                }
+            }
+            boxCart.Items.Refresh();
+            MessageBox.Show("Saved list to desktop.");
         }
     }
 }

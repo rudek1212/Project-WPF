@@ -20,7 +20,6 @@ namespace ProjektNaPO
                 myStream.Close();
                 return productList;
             }
-            MessageBox.Show("Database not found. Created new one.");
             var emptyProductList = new List<Product>();
             Serialize(emptyProductList, path);
             return emptyProductList;
