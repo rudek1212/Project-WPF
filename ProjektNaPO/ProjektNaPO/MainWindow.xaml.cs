@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
+using System.IO;
 using System.Windows;
+using System.Windows.Media;
 
 namespace ProjektNaPO
 {
@@ -11,6 +13,7 @@ namespace ProjektNaPO
         public MainWindow()
         {
             InitializeComponent();
+            CreateDir();
         }
 
         private void buttonAdmin_Click(object sender, RoutedEventArgs e)
@@ -52,6 +55,15 @@ namespace ProjektNaPO
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        public static void CreateDir()
+        {
+            var path = Directory.GetCurrentDirectory() + @"\DB\Categories";
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
         }
     }
 }
