@@ -13,6 +13,8 @@ namespace ProjektNaPO
             Game
         }
 
+        private static int counter;
+        public int Id {get;set;}
         public int Amount;
         public string Name;
         public double Price;
@@ -20,6 +22,7 @@ namespace ProjektNaPO
 
         public Product(string name, int amount, double price, KindOf prod)
         {
+            Id = counter++;
             Name = name;
             Amount = amount;
             Price = price;

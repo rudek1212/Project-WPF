@@ -18,7 +18,7 @@ namespace ProjektNaPO
         private readonly List<Product> _books =
             Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\Categories\books.dat");
 
-        private readonly List<Product> _cart =
+        private List<Product> _cart =
             Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\cart.dat");
 
         private readonly List<Product> _games =
@@ -27,7 +27,7 @@ namespace ProjektNaPO
         private readonly List<Product> _movies =
             Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\Categories\movies.dat");
 
-        private readonly List<Product> _products =
+        private List<Product> _products =
             Serialization.Deserialize(Directory.GetCurrentDirectory() + @"\DB\list.dat");
 
         public Cart()
@@ -95,24 +95,26 @@ namespace ProjektNaPO
 
         private void print_Click(object sender, RoutedEventArgs e)
         {
-            List<string> CartList = new List<string>();
+            var cartList = new List<string>();
             foreach (var product in _cart)
-                CartList.Add(product.ToString());
-            File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\CartList.txt", CartList);
-            foreach (var product in _cart)
+                cartList.Add(product.ToString());
+            File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\CartList.txt",
+                cartList);
+            for (int i = _cart.Count; i > 0; i--)
             {
-                foreach (var element in _products)
+                for (int j = _products.Count; j > 0; j--)
                 {
-                    if (product.Equals(element))
+                    if (_cart.ElementAt(i-1).Id == _products.ElementAt(j-1).Id)
                     {
-                        _products.Remove(element);
-                        _cart.Remove(product);
+                        _products.RemoveAt(j-1);
+                        break;
                     }
-
                 }
+                _cart.RemoveAt(i - 1);
             }
-            boxCart.Items.Refresh();
+            Serialization.Serialize(_products, Directory.GetCurrentDirectory() + @"\DB\list.dat");
             MessageBox.Show("Saved list to desktop.");
+            boxCart.Items.Refresh();
         }
     }
 }
