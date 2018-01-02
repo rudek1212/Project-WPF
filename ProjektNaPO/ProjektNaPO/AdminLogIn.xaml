@@ -3,10 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProjektNaPO"
         mc:Ignorable="d"
-        Title="AdminLogIn" Height="150" Width="350" Closing="Window_Closing">
+        ResizeMode="NoResize"
+        Title="AdminLogIn" Height="135" Width="350" Closing="Window_Closing">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/background.jpg"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -15,10 +18,19 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <Label Content="LOGIN" FontWeight="ExtraBold" Grid.Row="0"/>
-        <Label Content="PASSWORD" FontWeight="ExtraBold" Grid.Row="1"/>
+        <Label Content="LOGIN" FontWeight="ExtraBold" Grid.Row="0" Foreground="#FFAC0000"/>
+        <Label Content="PASSWORD" FontWeight="ExtraBold" Grid.Row="1" Foreground="#FFAC0000"/>
         <TextBox Grid.Row="0" Margin="100 5 10 5" Name="LoginBox" KeyDown="EnterCheck"/>
         <PasswordBox Grid.Row="1" Margin="100 5 10 5" Name="PasswordBox" KeyDown="EnterCheck"/>
-        <Button Content="LOGIN" Grid.Row="2" Click="IsLoginOk"></Button>
+        <Button Content="LOGIN" Grid.Row="2" Click="IsLoginOk" Margin="5 5 5 0">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF1F1D1D" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

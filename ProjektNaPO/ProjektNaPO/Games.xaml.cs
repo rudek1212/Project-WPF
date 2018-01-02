@@ -21,6 +21,7 @@ namespace ProjektNaPO
         {
             InitializeComponent();
             GamesView.ItemsSource = _games;
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             CartView.ItemsSource = _cart;
         }
 

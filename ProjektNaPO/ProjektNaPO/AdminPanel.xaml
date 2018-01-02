@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektNaPO"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="AdminPanel" Height="530" Width="300" Closing="Window_Closing">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/background.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="300"/>
@@ -31,14 +35,41 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <ListBox Margin="10 10 10 10" Name="listOfContent" Grid.ColumnSpan="12" Grid.Row="1"/>
-        <Button Name="buttonDeleteObject" Grid.ColumnSpan="4" Content="Delete" Grid.Row="2" Margin="5 0 5 0" Click="buttonDeleteObject_Click"/>
-        <Button Name="buttonAddObject" Grid.ColumnSpan="4" Content="Add" Grid.Row="2" Grid.Column="4" Margin="5 0 5 0" Click="buttonAddObject_Click"/>
-        <Button Name="buttonSaveAll" Grid.ColumnSpan="4" Content="Save" Grid.Row="2" Grid.Column="8" Margin="5 0 5 0" Click="buttonSaveAll_Click"/>
-        <Label Content="Name" VerticalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="3"></Label>
-        <Label Content="Amount" VerticalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="3"></Label>
-        <Label Content="Price" VerticalAlignment="Center" Grid.Row="5" Grid.ColumnSpan="3"></Label>
-        <Label Content="Category" VerticalAlignment="Center" Grid.Row="6" Grid.ColumnSpan="3"></Label>
-        <Label Content="Categories" VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0"></Label>
+        <Button Name="buttonDeleteObject" Grid.ColumnSpan="4" Content="Delete" Grid.Row="2" Margin="5 0 5 0" Click="buttonDeleteObject_Click" FontWeight="Bold">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF4F4A4A" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Name="buttonAddObject" Grid.ColumnSpan="4" Content="Add" Grid.Row="2" Grid.Column="4" Margin="5 0 5 0" Click="buttonAddObject_Click" FontWeight="Bold">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF4B4949" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Name="buttonSaveAll" Grid.ColumnSpan="4" Content="Save" Grid.Row="2" Grid.Column="8" Margin="5 0 5 0" Click="buttonSaveAll_Click" FontWeight="Bold">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF555353" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label Content="Name" VerticalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="3" Foreground="#FFF9F7F7"></Label>
+        <Label Content="Amount" VerticalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="3" Foreground="White"></Label>
+        <Label Content="Price" VerticalAlignment="Center" Grid.Row="5" Grid.ColumnSpan="3" Foreground="White"></Label>
+        <Label Content="Category" VerticalAlignment="Center" Grid.Row="6" Grid.ColumnSpan="3" Foreground="White"></Label>
+        <Label Content="Categories" VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0" Foreground="#FFF3EFEF"></Label>
         <TextBox Name="boxName" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="10" Margin="5 5 5 5"/>
         <TextBox Name="boxAmount" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="10" Margin="5 5 5 5"/>
         <TextBox Name="boxPrice" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="10" Margin="5 5 5 5"/>

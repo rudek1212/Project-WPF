@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektNaPO"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="Multimedia Shop" Height="398.437" Width="621.093" Closing="Window_Closing">
     <Border Padding="10">
         <Border.Background>
@@ -20,13 +21,13 @@
             <StackPanel.Effect>
                 <DropShadowEffect/>
             </StackPanel.Effect>
-            <TextBlock Text="SHOP" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Margin="184,10,164,10" FontSize="20" FontFamily="Magneto" Width="99" RenderTransformOrigin="0.457,-0.132" Foreground="#FFDC1313"/>
+            <TextBlock Text="SHOP" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Margin="250,10,258,10" FontSize="20" FontFamily="Magneto" Width="85" RenderTransformOrigin="0.457,-0.132" Foreground="#FFDC1313"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Margin="10,0,10,-49" Grid.Column="0" x:Name="buttonMusic" Content="Music" Click="buttonMusic_Click" FontSize="14" FontFamily="Showcard Gothic">
+                <Button Margin="10,0,10,-49" Grid.Column="0" x:Name="buttonMusic" Content="Music" Click="buttonMusic_Click" FontSize="14" FontFamily="Showcard Gothic" FontWeight="Bold">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                             <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -36,7 +37,7 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <Button Margin="10,0,10,-49" Grid.Column="1" x:Name="buttonFilm" Content="Film" Click="buttonFilm_Click" FontFamily="Showcard Gothic" FontSize="14">
+                <Button Margin="10,0,10,-49" Grid.Column="1" x:Name="buttonFilm" Content="Film" Click="buttonFilm_Click" FontFamily="Showcard Gothic" FontSize="14" FontWeight="Bold">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                             <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -53,7 +54,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Margin="10,55,10,-110" Grid.Column="0" x:Name="buttonGames" Content="Games" Click="buttonGames_Click" FontFamily="Showcard Gothic" FontSize="14">
+                <Button Margin="10,55,10,-110" Grid.Column="0" x:Name="buttonGames" Content="Games" Click="buttonGames_Click" FontFamily="Showcard Gothic" FontSize="16" FontWeight="Bold">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                             <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -63,7 +64,7 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <Button Margin="10,55,10,-110" Grid.Column="1" x:Name="buttonBooks" Content="Books" Click="buttonBooks_Click" FontFamily="Showcard Gothic" FontSize="14">
+                <Button Margin="10,55,10,-110" Grid.Column="1" x:Name="buttonBooks" Content="Books" Click="buttonBooks_Click" FontFamily="Showcard Gothic" FontSize="16" FontWeight="Bold">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                             <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -84,17 +85,15 @@
                     <ColumnDefinition Width="217*"/>
                     <ColumnDefinition Width="80*"/>
                 </Grid.ColumnDefinitions>
-                <Button Margin="108,26,0,-60" x:Name="buttonBasket" Content="Basket" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="buttonBasket_Click" Height="50" Grid.Row="1" FontFamily="Showcard Gothic" FontSize="14">
+                <Button Margin="53,0,134,-49" x:Name="buttonBasket" Content="" VerticalAlignment="Top" Click="buttonBasket_Click" Height="65" Grid.Row="1" FontFamily="Showcard Gothic" FontSize="14" Grid.Column="1" RenderTransformOrigin="0.578,0.146" Foreground="#FF423535" BorderBrush="#FFFF1010">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
                     <Button.Background>
-                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
-                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
-                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
-                            <GradientStop Color="#FF111111" Offset="1"/>
-                        </LinearGradientBrush>
+                        <ImageBrush ImageSource="Images/cart2.jpg" Stretch="UniformToFill"/>
                     </Button.Background>
                 </Button>
-                <Button Margin="10,0,10,-121" x:Name="buttonAdmin" Content ="Admin Panel" VerticalAlignment="Bottom" Click="buttonAdmin_Click" Grid.ColumnSpan="3" Height="40" Grid.Row="1" FontFamily="Showcard Gothic" FontSize="14">
+                <Button Margin="10,0,10,-121" x:Name="buttonAdmin" Content ="Admin Panel" VerticalAlignment="Bottom" Click="buttonAdmin_Click" Grid.ColumnSpan="3" Height="40" Grid.Row="1" FontFamily="Showcard Gothic" FontSize="16" FontWeight="Bold">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                             <GradientStop Color="#FFF3F3F3" Offset="0"/>

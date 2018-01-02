@@ -22,6 +22,8 @@ namespace ProjektNaPO
             InitializeComponent();
             AlbumsView.ItemsSource = _albums;
             CartView.ItemsSource = _cart;
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
         }
 
         private void AddToCart_Click(object sender, RoutedEventArgs e)

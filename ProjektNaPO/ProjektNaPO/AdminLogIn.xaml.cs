@@ -16,6 +16,7 @@ namespace ProjektNaPO
         {
             InitializeComponent();
             LoginBox.Focus();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         public void IsLoginOk(object sender, RoutedEventArgs e)

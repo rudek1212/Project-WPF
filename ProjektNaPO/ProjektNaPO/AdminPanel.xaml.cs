@@ -13,6 +13,7 @@ namespace ProjektNaPO
     {
         //creating categorized lists
         private readonly List<Product> _albums = new List<Product>();
+
         private readonly List<Product> _books = new List<Product>();
         private readonly List<Product> _games = new List<Product>();
         private readonly List<Product> _movies = new List<Product>();
@@ -31,12 +32,20 @@ namespace ProjektNaPO
             comboxCategory.ItemsSource = Enum.GetValues(typeof(Product.KindOf));
             comboxMainCat.ItemsSource = Enum.GetValues(typeof(Product.KindOf));
             File.Delete(Directory.GetCurrentDirectory() + @"\DB\cart.dat");
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         private void buttonDeleteObject_Click(object sender, RoutedEventArgs e)
         {
             var index = listOfContent.Items.IndexOf(listOfContent.SelectedItem);
-            _products.RemoveAt(index);
+            try
+            {
+                _products.RemoveAt(index);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Select an object to delete","Oops" );
+            }
             listOfContent.Items.Refresh();
         }
 

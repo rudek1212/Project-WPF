@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektNaPO"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="Cart" Height="300" Width="300" Closing="Window_Closing">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/background.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -16,7 +20,25 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <ListBox Name="boxCart" Margin="10 10 10 10" Grid.ColumnSpan="2"/>
-        <Button Name="removeFromCart" Content="Remove" Margin="5 5 5 5" Grid.Row="1" Click="removeFromCart_Click" />
-        <Button Name="print" Content="Print" Margin="5 5 5 5" Grid.Row="1" Grid.Column="1" Click="print_Click"/>
+        <Button Name="removeFromCart" Content="Remove" Margin="5 5 5 5" Grid.Row="1" Click="removeFromCart_Click" FontWeight="Bold" >
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF514E4E" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Name="print" Content="Print" Margin="5 5 5 5" Grid.Row="1" Grid.Column="1" Click="print_Click" FontWeight="Bold">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF5B5B5B" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

@@ -33,6 +33,7 @@ namespace ProjektNaPO
         public Cart()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             boxCart.ItemsSource = _cart;
         }
 
@@ -89,7 +90,7 @@ namespace ProjektNaPO
             }
             catch (Exception)
             {
-                //do nothing
+                MessageBox.Show("No items selected");
             }
         }
 

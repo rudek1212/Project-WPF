@@ -13,6 +13,7 @@ namespace ProjektNaPO
         public MainWindow()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             CreateDir();
         }
 
